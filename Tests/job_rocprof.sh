@@ -7,6 +7,7 @@
 #SBATCH --hint=nomultithread
 #SBATCH --account=project_462000031
 #SBATCH --gpus-per-node=1
+#SBATCH --exclusive
 
 module load LUMI PrgEnv-cray partition/G buildtools cray-hdf5-parallel rocm
 module li
