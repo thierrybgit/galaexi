@@ -1,0 +1,46 @@
+!=================================================================================================================================
+! Copyright (c) 2010-2022 Prof. Claus-Dieter Munz
+! Copyright (c) 2022-2024 Prof. Andrea Beck
+! This file is part of FLEXI, a high-order accurate framework for numerically solving PDEs with discontinuous Galerkin methods.
+! For more information see https://www.flexi-project.org and https://numericsresearchgroup.org
+!
+! FLEXI is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
+! as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+!
+! FLEXI is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+! of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License v3.0 for more details.
+!
+! You should have received a copy of the GNU General Public License along with FLEXI. If not, see <http://www.gnu.org/licenses/>.
+!=================================================================================================================================
+!===================================================================================================================================
+!> Contains global variables provided by the visualize recordpoints navier stokes module
+!===================================================================================================================================
+MODULE MOD_EquationRP_Vars
+! MODULES
+IMPLICIT NONE
+PUBLIC
+SAVE
+!-----------------------------------------------------------------------------------------------------------------------------------
+! GLOBAL VARIABLES
+!-----------------------------------------------------------------------------------------------------------------------------------
+
+! LOCAL TRANSFORMATION -------------------------------------------------------------------------------------------------------------
+INTEGER                            :: nVecTrans                    !< Number of vector quantities that should be transformed
+INTEGER,ALLOCATABLE                :: TransMap(:,:)                !< Mapping to those vector quantities
+LOGICAL,ALLOCATABLE                :: is2D(:)                      !< Indicating if one of those quantities is two dimensional
+! BOUNDARY LAYER PROPERTIES --------------------------------------------------------------------------------------------------------
+INTEGER                            :: nBLProps                     !< Number of avariables for boundary layer properties
+INTEGER                            :: iDensity                     !< Position of Density in RPVars
+INTEGER                            :: iPressure                    !< Position of Pressure in RPVars
+INTEGER                            :: iVelocity                    !< Position of Velocity in RPVars
+CHARACTER(LEN=255),ALLOCATABLE     :: VarNames_BLProps(:)          !< Variable names of boundary layer properties
+REAL                               :: pInf                         !< Pressure used to calculate c_p
+REAL                               :: uInf                         !< Velocity used to calculate c_p
+REAL                               :: rhoInf                       !< Density used to calculate c_p
+
+LOGICAL                            :: EquationRPInitIsDone=.FALSE. !< Switch to signal that init is done
+INTEGER           :: IniExactFunc             !< Number of exact function used for initialization
+INTEGER           :: nRefState         !< number of refstates defined in parameter file
+REAL,ALLOCATABLE  :: RefStatePrim(:,:) !< refstates in primitive variables (as read from ini file)
+!===================================================================================================================================
+END MODULE MOD_EquationRP_Vars

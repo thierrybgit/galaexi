@@ -1,0 +1,4 @@
+# Troubleshooting
+
+ - Debugging
+ - Common issues
